@@ -1,3 +1,5 @@
+![](https://github.com/wrobbins/quoter/workflows/Rust/badge.svg)
+
 # Quoter
 
 A simple CLI app in Rust to obtain stock quotes.
