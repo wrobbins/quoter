@@ -1,4 +1,4 @@
-![](https://github.com/wrobbins/quoter/workflows/Rust/badge.svg)
+![](https://github.com/wrobbins/quoter/workflows/Build/badge.svg)
 
 # Quoter
 
