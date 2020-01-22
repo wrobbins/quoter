@@ -1,20 +1,17 @@
+extern crate ureq;
+
 fn main() {
-    match request(){
-        Ok(json) => println!("{}",json),
-        Err(e) => println!("Error!: {}", e)
+    match request() {
+        Ok(json) => println!("{}", json),
+        Err(e) => println!("Error!: {}", e),
     }
 }
 
-fn request() -> Result<String, Box<dyn std::error::Error>> {
-    let client = reqwest::blocking::Client::new();
+fn request() -> Result<serde_json::Value, std::io::Error> {
+    let response = ureq::get("https://query1.finance.yahoo.com/v7/finance/quote")
+        .query("symbols", "fb,tsla,stmp")
+        .query("fields", "regularMarketPrice,regularMarketChangePercent")
+        .call();
 
-    let response = client
-        .get("https://query1.finance.yahoo.com/v7/finance/quote")
-        .query(&[("symbols", "fb")])
-        .query(&[("fields", "regularMarketPrice,regularMarketChangePercent")])
-        .send()?;
-
-    let body = response.text()?;
-
-    return Ok(body);
+    return response.into_json();
 }

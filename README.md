@@ -8,7 +8,7 @@ This is an exercise in getting _some_ exposure to [Rust](https://www.rust-lang.o
 
 ## TODO
 
-- [ ] replace reqwest with ureq
+- [x] replace reqwest with [ureq](https://github.com/algesten/ureq)
 - [ ] accept 1-N sybols on the cli
 - [ ] config file for saving default symbols
 - [ ] pretty output options:
