@@ -1,6 +1,6 @@
-![](https://github.com/wrobbins/quoter/workflows/Build/badge.svg)
-
 # Quoter
+
+![build-status](https://github.com/wrobbins/quoter/workflows/Build/badge.svg)
 
 A simple CLI app in Rust to obtain stock quotes.
 
