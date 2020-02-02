@@ -9,7 +9,7 @@ This is an exercise in getting _some_ exposure to [Rust](https://www.rust-lang.o
 ## TODO
 
 - [x] replace reqwest with [ureq](https://github.com/algesten/ureq)
-- [ ] accept 1-N sybols on the cli
+- [x] accept 1-N sybols on the cli
 - [ ] config file for saving default symbols
 - [ ] pretty output options:
   - [colored](https://github.com/mackwic/colored)

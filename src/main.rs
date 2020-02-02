@@ -1,8 +1,21 @@
-use std::env;
 mod yahoo;
+use clap::{App, Arg};
 
 fn main() {
-    let symbols: Vec<String> = env::args().collect();
+    let matches = App::new("Quoter")
+        .about("Stock quotes on the CLI")
+        .arg(
+            Arg::with_name("symbols")
+                .long("symbols")
+                .short("s")
+                .multiple(true)
+                .takes_value(true)
+                .required(true)
+                .help("space separated list of stock symbols"),
+        )
+        .get_matches();
+
+    let symbols = matches.values_of("symbols").unwrap().collect();
 
     let value: serde_json::Value = request(symbols).expect("failed to call Yahoo finance");
 
@@ -22,7 +35,7 @@ fn main() {
     }
 }
 
-fn request(symbols: Vec<String>) -> Result<serde_json::Value, std::io::Error> {
+fn request(symbols: Vec<&str>) -> Result<serde_json::Value, std::io::Error> {
     let response = ureq::get("https://query1.finance.yahoo.com/v7/finance/quote")
         .query("symbols", &symbols.join(","))
         .query("fields", "regularMarketPrice,regularMarketChangePercent")
