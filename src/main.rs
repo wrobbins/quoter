@@ -1,7 +1,10 @@
+use std::env;
 mod yahoo;
 
 fn main() {
-    let value: serde_json::Value = request().expect("failed to call Yahoo finance");
+    let symbols: Vec<String> = env::args().collect();
+
+    let value: serde_json::Value = request(symbols).expect("failed to call Yahoo finance");
 
     let typed: yahoo::QuoteResponseWrapper =
         serde_json::from_value(value).expect("failed to deserialize to type");
@@ -19,9 +22,9 @@ fn main() {
     }
 }
 
-fn request() -> Result<serde_json::Value, std::io::Error> {
+fn request(symbols: Vec<String>) -> Result<serde_json::Value, std::io::Error> {
     let response = ureq::get("https://query1.finance.yahoo.com/v7/finance/quote")
-        .query("symbols", "fb,tsla")
+        .query("symbols", &symbols.join(","))
         .query("fields", "regularMarketPrice,regularMarketChangePercent")
         .call();
 
