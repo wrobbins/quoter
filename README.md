@@ -15,3 +15,4 @@ This is an exercise in getting _some_ exposure to [Rust](https://www.rust-lang.o
   - [colored](https://github.com/mackwic/colored)
   - [prettytable](https://github.com/phsym/prettytable-rs)
 - [ ] optional configs for calculating cost basis
+
