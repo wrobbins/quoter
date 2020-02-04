@@ -1,5 +1,6 @@
 mod yahoo;
 use clap::{App, Arg};
+use colored::*;
 
 fn main() {
     let matches = App::new("Quoter")
@@ -23,16 +24,24 @@ fn main() {
         serde_json::from_value(value).expect("failed to deserialize to type");
 
     for result in typed.quoteResponse.result.iter() {
+        let color = get_change_color(result.regularMarketChangePercent);
         println!(
             "{0} {1} {2}",
             format!("{:<5}", result.symbol),
             format!("{:>10}", format!("${:.2}", result.regularMarketPrice)),
             format!(
                 "{:>10}",
-                format!("{:.2}%", result.regularMarketChangePercent)
+                format!("{:.2}%", result.regularMarketChangePercent).color(color)
             )
         );
     }
+}
+
+fn get_change_color(change: f32) -> &'static str{
+    if  change > 0.0  {
+        return "green";
+    }
+    return "red";
 }
 
 fn request(symbols: Vec<&str>) -> Result<serde_json::Value, std::io::Error> {

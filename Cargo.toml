@@ -11,3 +11,6 @@ ureq = { version = "*", features = ["json"] }
 serde_json = "1.0"
 serde = { version = "*", features = ["derive"] }
 clap = { version = "*" }
+colored = "*"
+#dirs = "2.0.2"
+#config = "0.9"
