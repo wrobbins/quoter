@@ -20,8 +20,13 @@ fn main() {
 
     let value: serde_json::Value = request(symbols).expect("failed to call Yahoo finance");
 
-    let typed: yahoo::QuoteResponseWrapper =
+    let mut typed: yahoo::QuoteResponseWrapper =
         serde_json::from_value(value).expect("failed to deserialize to type");
+
+    typed
+        .quoteResponse
+        .result
+        .sort_unstable_by(|l, r| l.symbol.cmp(&r.symbol));
 
     for result in typed.quoteResponse.result.iter() {
         let color = get_change_color(result.regularMarketChangePercent);
@@ -37,8 +42,8 @@ fn main() {
     }
 }
 
-fn get_change_color(change: f32) -> &'static str{
-    if  change > 0.0  {
+fn get_change_color(change: f32) -> &'static str {
+    if change > 0.0 {
         return "green";
     }
     return "red";

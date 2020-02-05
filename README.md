@@ -21,6 +21,7 @@ This is an exercise in getting _some_ exposure to [Rust](https://www.rust-lang.o
 - [ ] support for alternative APIs
   - IE [this](https://financialmodelingprep.com/developer/docs/)
 - [ ] fancy unicode icons for :arrow_up: :arrow_down:
+- [ ] publish on `brew` `apt` `crates`
 
 ### Research
 
