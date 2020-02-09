@@ -13,4 +13,4 @@ serde = { version = "*", features = ["derive"] }
 clap = { version = "*" }
 colored = "*"
 #dirs = "2.0.2"
-#config = "0.9"
+config = "0.9"
