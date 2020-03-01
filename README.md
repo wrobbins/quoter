@@ -6,6 +6,8 @@ A simple CLI app in Rust to obtain stock quotes.
 
 This is an exercise in getting _some_ exposure to [Rust](https://www.rust-lang.org/).
 
+![Example](./docs/example.svg)
+
 ## TODO
 
 - [x] replace reqwest with [ureq](https://github.com/algesten/ureq)
