@@ -46,19 +46,19 @@ fn main() {
         serde_json::from_value(value).expect("failed to deserialize to type");
 
     typed
-        .quoteResponse
+        .quote_response
         .result
         .sort_unstable_by(|l, r| l.symbol.cmp(&r.symbol));
 
-    for result in typed.quoteResponse.result.iter() {
-        let color = get_change_color(result.regularMarketChangePercent);
+    for result in typed.quote_response.result.iter() {
+        let color = get_change_color(result.regular_market_change_percent);
         println!(
             "{0} {1} {2}",
             format!("{:<5}", result.symbol),
-            format!("{:>10}", format!("${:.2}", result.regularMarketPrice)),
+            format!("{:>10}", format!("${:.2}", result.regular_market_price)),
             format!(
                 "{:>10}",
-                format!("{:.2}%", result.regularMarketChangePercent).color(color)
+                format!("{:.2}%", result.regular_market_change_percent).color(color)
             )
         );
     }
