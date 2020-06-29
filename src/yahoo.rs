@@ -1,10 +1,9 @@
-#![allow(non_snake_case)]
 use serde::Deserialize;
 
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct QuoteResponseWrapper {
-    pub quoteResponse: QuoteResponse,
+    pub quote_response: QuoteResponse,
 }
 
 #[derive(Deserialize)]
@@ -16,7 +15,7 @@ pub struct QuoteResponse {
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Quote {
-    pub regularMarketPrice: f32,
+    pub regular_market_price: f32,
     pub symbol: String,
-    pub regularMarketChangePercent: f32
+    pub regular_market_change_percent: f32
 }
