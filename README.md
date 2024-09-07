@@ -1,3 +1,5 @@
+:warning: The Yahoo API used now requires authentication and this no longer works. :warning:
+
 # Quoter
 
 ![build-status](https://github.com/wrobbins/quoter/workflows/Build/badge.svg)
